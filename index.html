@@ -447,7 +447,13 @@
 npm install vue-toast-show -S
 
 引入:
-import Toast from 'vue-toast-show';import 'vue-toast-show/lib/style/index.
+import Toast from 'vue-toast-show';import 'vue-toast-show/lib/style/index.css';Vue.use(Toast);
+
+或者使用配置
+import Toast from 'vue-toast-show';import 'vue-toast-show/lib/style/index.css';Vue.use(Toast, &#123;    type: 'info',    duration: 3000&#125;);
+
+在组件中使用:
+&lt;template&gt;  &lt;div&gt;    &lt;button @click="handleOpen1"&gt;
               ...
             </p>
           <!--noindex-->
@@ -622,7 +628,12 @@ import Toast from 'vue-toast-show';import 'vue-toast-show/lib/style/index.
         
           
             <p>
-              // 模板内容&lt;div id="app"&gt;  &lt;input type="text" v-model="message"&gt;  &#123;&#123;message&#125;&#125;  &lt;div&gt;&#123;&#123;a.b&#125;&#125;&lt;/
+              // 模板内容&lt;div id="app"&gt;  &lt;input type="text" v-model="message"&gt;  &#123;&#123;message&#125;&#125;  &lt;div&gt;&#123;&#123;a.b&#125;&#125;&lt;/div&gt;&lt;/div&gt;// vue脚本let vm = new Vue(&#123;  el: '#app',  data: &#123;    message: '我是message',    a: &#123;      b: '我的a.b'     &#125;  &#125;&#125;)
+
+看到上面的代码，使用过vue的同学能知道页面的渲染结果会如下图所示：
+
+那他是如何进行渲染的呢，我们带着问题来进入正题。
+首先新建Vue.js并创建一个名为Vue的类：class V
               ...
             </p>
           <!--noindex-->
