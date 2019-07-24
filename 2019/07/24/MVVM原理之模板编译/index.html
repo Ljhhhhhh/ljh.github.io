@@ -94,17 +94,21 @@
   };
 </script>
 
-  <meta name="description" content="卢洁辉的个人博客">
-<meta name="keywords" content="前端,Vue,React,小程序,H5,个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ljhhhhh&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1234567891011121314151617// 模板内容&amp;lt;div id=&quot;app&quot;&amp;gt;  &amp;lt;input type=&quot;text&quot; v-model=&quot;message&quot;&amp;gt;  &amp;#123;&amp;#123;message&amp;#125;&amp;#125;  &amp;lt;div&amp;gt;&amp;#123;&amp;#123;a.b&amp;#125;&amp;#125;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;// vue">
+<meta name="keywords" content="原理解析,MVVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVVM原理之模板编译">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/MVVM原理之模板编译/index.html">
 <meta property="og:site_name" content="ljhhhhh&#39;s Blog">
-<meta property="og:description" content="卢洁辉的个人博客">
+<meta property="og:description" content="1234567891011121314151617// 模板内容&amp;lt;div id=&quot;app&quot;&amp;gt;  &amp;lt;input type=&quot;text&quot; v-model=&quot;message&quot;&amp;gt;  &amp;#123;&amp;#123;message&amp;#125;&amp;#125;  &amp;lt;div&amp;gt;&amp;#123;&amp;#123;a.b&amp;#125;&amp;#125;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;// vue">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/24FA51F334A3A315F1EDB7963D671A35.png">
+<meta property="og:image" content="http://yoursite.com/images/6263FE60958FBA6F540CD40936D4B60A.png">
+<meta property="og:updated_time" content="2019-07-24T02:45:03.107Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ljhhhhh&#39;s Blog">
-<meta name="twitter:description" content="卢洁辉的个人博客">
+<meta name="twitter:title" content="MVVM原理之模板编译">
+<meta name="twitter:description" content="1234567891011121314151617// 模板内容&amp;lt;div id=&quot;app&quot;&amp;gt;  &amp;lt;input type=&quot;text&quot; v-model=&quot;message&quot;&amp;gt;  &amp;#123;&amp;#123;message&amp;#125;&amp;#125;  &amp;lt;div&amp;gt;&amp;#123;&amp;#123;a.b&amp;#125;&amp;#125;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;// vue">
+<meta name="twitter:image" content="http://yoursite.com/images/24FA51F334A3A315F1EDB7963D671A35.png">
 
 
 
@@ -112,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/24/MVVM原理之模板编译/">
 
 
 
@@ -123,7 +127,7 @@
 </script>
 
   
-  <title>ljhhhhh's Blog</title>
+  <title>MVVM原理之模板编译 | ljhhhhh's Blog</title>
   
 
 
@@ -171,8 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,7 +217,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -270,9 +273,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -304,10 +307,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/24/MVVM原理之模板编译/" class="post-title-link" itemprop="url">MVVM原理之模板编译</a>
+          <h1 class="post-title" itemprop="name headline">MVVM原理之模板编译
+
               
             
           </h1>
@@ -391,9 +392,7 @@
       
 
       
-        
-          
-            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模板内容</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"message"</span>&gt;</span><br><span class="line">  &#123;&#123;message&#125;&#125;</span><br><span class="line">  &lt;div&gt;&#123;&#123;a.b&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// vue脚本</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'我是message'</span>,</span><br><span class="line">    a: &#123;</span><br><span class="line">      b: <span class="string">'我的a.b'</span> </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模板内容</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"message"</span>&gt;</span><br><span class="line">  &#123;&#123;message&#125;&#125;</span><br><span class="line">  &lt;div&gt;&#123;&#123;a.b&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// vue脚本</span></span><br><span class="line"><span class="keyword">let</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'我是message'</span>,</span><br><span class="line">    a: &#123;</span><br><span class="line">      b: <span class="string">'我的a.b'</span> </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>看到上面的代码，使用过vue的同学能知道页面的渲染结果会如下图所示：</p>
 <p><img src="/images/24FA51F334A3A315F1EDB7963D671A35.png" alt="WX20190325-205034@2x.png"></p>
@@ -467,13 +466,13 @@
 <p>斗胆发文，欢迎吐槽和指正。</p>
 <p>附上完整代码示例：<a href="https://github.com/Ljhhhhhh/mvvm-demo/tree/compile" target="_blank" rel="noopener">https://github.com/Ljhhhhhh/mvvm-demo/tree/compile</a></p>
 
-          
-        
       
     </div>
 
     
 
+    
+      
     
 
     
@@ -491,172 +490,41 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ljhhhhhh">
-      <meta itemprop="description" content="卢洁辉的个人博客">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ljhhhhh's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
         
+          
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/23/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
+        <div class="post-tags">
           
+            <a href="/tags/原理解析/" rel="tag"># 原理解析</a>
           
+            <a href="/tags/MVVM/" rel="tag"># MVVM</a>
           
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-23 17:48:49" itemprop="dateCreated datePublished" datetime="2019-07-23T17:48:49+08:00">2019-07-23</time>
-            </span>
-          
-
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/23/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -666,14 +534,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -693,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -766,6 +644,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先新建Vue-js并创建一个名为Vue的类："><span class="nav-number">1.</span> <span class="nav-text">首先新建Vue.js并创建一个名为Vue的类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compile类对模板进行处理："><span class="nav-number">2.</span> <span class="nav-text">Compile类对模板进行处理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取跟元素节点后，利用node2fragment函数把dom元素放入内存中处理："><span class="nav-number">3.</span> <span class="nav-text">获取跟元素节点后，利用node2fragment函数把dom元素放入内存中处理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拿到了文档碎片fragment，我们就可以开始编写Compile核心函数了"><span class="nav-number">4.</span> <span class="nav-text">拿到了文档碎片fragment，我们就可以开始编写Compile核心函数了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compileText"><span class="nav-number">5.</span> <span class="nav-text">compileText</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compileElement"><span class="nav-number">6.</span> <span class="nav-text">compileElement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompileUtil"><span class="nav-number">7.</span> <span class="nav-text">CompileUtil</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后一步，就是把文档碎片fragment放回到根节点中去"><span class="nav-number">8.</span> <span class="nav-text">最后一步，就是把文档碎片fragment放回到根节点中去</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -895,6 +790,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -915,6 +814,8 @@
 
 
 
+
+  
 
 
 
