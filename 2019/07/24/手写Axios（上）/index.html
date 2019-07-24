@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Ljhhhhh&#39;s Blog">
 <meta property="og:description" content="阅读建议如果你对XMLHttpRequest的使用不熟悉，建议先在MDN上先行学习。 项目源码已经上传到github，并已添加注释，您可直接查看源码学习。 先来看axios的使用方式12345678910axios(&amp;#123;  method: &apos;post&apos;,  url: &apos;/url&apos;,  data: &amp;#123;    a: 1,    b: 2  &amp;#125;&amp;#125;).then((re">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-24T13:05:29.628Z">
+<meta property="og:updated_time" content="2019-07-24T13:07:12.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手写Axios（上）">
 <meta name="twitter:description" content="阅读建议如果你对XMLHttpRequest的使用不熟悉，建议先在MDN上先行学习。 项目源码已经上传到github，并已添加注释，您可直接查看源码学习。 先来看axios的使用方式12345678910axios(&amp;#123;  method: &apos;post&apos;,  url: &apos;/url&apos;,  data: &amp;#123;    a: 1,    b: 2  &amp;#125;&amp;#125;).then((re">
@@ -378,7 +378,7 @@
                 
               
 
-              <time title="创建时间：2019-07-24 21:00:56 / 修改时间：21:05:29" itemprop="dateCreated datePublished" datetime="2019-07-24T21:00:56+08:00">2019-07-24</time>
+              <time title="创建时间：2019-07-24 21:00:56 / 修改时间：21:07:12" itemprop="dateCreated datePublished" datetime="2019-07-24T21:00:56+08:00">2019-07-24</time>
             </span>
           
 
@@ -462,7 +462,7 @@
 
 <h3 id="处理返回信息"><a href="#处理返回信息" class="headerlink" title="处理返回信息"></a>处理返回信息</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">transformResponse</span>(<span class="params">data: any</span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> data === <span class="string">'string'</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      data = <span class="built_in">JSON</span>.parse(data)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="comment">// do nothing</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="promise化"><a href="#promise化" class="headerlink" title="promise化"></a>promise化</h2><ol>
+<h2 id="Promise化"><a href="#Promise化" class="headerlink" title="Promise化"></a>Promise化</h2><ol>
 <li>处理xhr.js，把xhr核心包含在promise里面</li>
 <li>当触发onreadystatechange事件的时候，格式化响应数据，并对状态进行判断，分别触发 resolve/reject事件</li>
 </ol>
@@ -696,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读建议"><span class="nav-number">1.</span> <span class="nav-text">阅读建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先来看axios的使用方式"><span class="nav-number">2.</span> <span class="nav-text">先来看axios的使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios核心"><span class="nav-number">3.</span> <span class="nav-text">axios核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理"><span class="nav-number">4.</span> <span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理url"><span class="nav-number">4.1.</span> <span class="nav-text">处理url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理获取到的data信息"><span class="nav-number">4.2.</span> <span class="nav-text">处理获取到的data信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理头部信息"><span class="nav-number">4.3.</span> <span class="nav-text">处理头部信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理返回信息"><span class="nav-number">4.4.</span> <span class="nav-text">处理返回信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#promise化"><span class="nav-number">5.</span> <span class="nav-text">promise化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#阅读建议"><span class="nav-number">1.</span> <span class="nav-text">阅读建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先来看axios的使用方式"><span class="nav-number">2.</span> <span class="nav-text">先来看axios的使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios核心"><span class="nav-number">3.</span> <span class="nav-text">axios核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理"><span class="nav-number">4.</span> <span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理url"><span class="nav-number">4.1.</span> <span class="nav-text">处理url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理获取到的data信息"><span class="nav-number">4.2.</span> <span class="nav-text">处理获取到的data信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理头部信息"><span class="nav-number">4.3.</span> <span class="nav-text">处理头部信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理返回信息"><span class="nav-number">4.4.</span> <span class="nav-text">处理返回信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Promise化"><span class="nav-number">5.</span> <span class="nav-text">Promise化</span></a></li></ol></div>
             
 
           </div>
