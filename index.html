@@ -287,6 +287,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/Vue-toast-show使用指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ljhhhhhh">
+      <meta itemprop="description" content="卢洁辉的个人博客">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ljhhhhh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/24/Vue-toast-show使用指南/" class="post-title-link" itemprop="url">Vue-toast-show使用指南</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-24 10:49:09 / Modified: 10:53:52" itemprop="dateCreated datePublished" datetime="2019-07-24T10:49:09+08:00">2019-07-24</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="vue-toast-show"><a href="#vue-toast-show" class="headerlink" title="vue-toast-show"></a>vue-toast-show</h1><p>基于vue的toast 插件。<a href="https://github.com/Ljhhhhhh/vue-toast-show" title="vue-toast-show" target="_blank" rel="noopener">git地址</a></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-toast-show -S</span><br></pre></td></tr></table></figure>
+
+<p>引入:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Toast <span class="keyword">from</span> <span class="string">'vue-toast-show'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'vue-toast-show/lib/style/index.css'</span>;</span><br><span class="line">Vue.use(Toast);</span><br></pre></td></tr></table></figure>
+
+<p>或者使用配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Toast <span class="keyword">from</span> <span class="string">'vue-toast-show'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'vue-toast-show/lib/style/index.css'</span>;</span><br><span class="line">Vue.use(Toast, &#123;</span><br><span class="line">    type: <span class="string">'info'</span>,</span><br><span class="line">    duration: <span class="number">3000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在组件中使用:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"handleOpen1"</span>&gt;默认提示&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="handleOpen2"&gt;成功提示&lt;/</span>button&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"handleOpen3"</span>&gt;设置时间&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="handleOpen4"&gt;不自动关闭&lt;/</span>button&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"handleOpen5"</span>&gt;设置类型&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="handleOpen6"&gt;loading提示&lt;/</span>button&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"clear"</span>&gt;清空提示&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">  export default &#123;</span></span><br><span class="line"><span class="regexp">    methods: &#123;</span></span><br><span class="line"><span class="regexp">      handleOpen1() &#123;</span></span><br><span class="line"><span class="regexp">        this.$toast('默认提示')</span></span><br><span class="line"><span class="regexp">      &#125;,</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">      handleOpen2() &#123;</span></span><br><span class="line"><span class="regexp">        this.$toast.success('成功提示')</span></span><br><span class="line"><span class="regexp">      &#125;,</span></span><br><span class="line"><span class="regexp">      handleOpen3() &#123;</span></span><br><span class="line"><span class="regexp">        this.$toast('定时3秒', &#123;</span></span><br><span class="line"><span class="regexp">          duration: 3000,</span></span><br><span class="line"><span class="regexp">          type: 'danger'</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">      &#125;,</span></span><br><span class="line"><span class="regexp">      handleOpen4() &#123;</span></span><br><span class="line"><span class="regexp">        this.$toast('不自动关闭', &#123;</span></span><br><span class="line"><span class="regexp">          duration: 0</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">      &#125;,</span></span><br><span class="line"><span class="regexp">      handleOpen5() &#123;</span></span><br><span class="line"><span class="regexp">        this.$toast('设置类型', &#123;</span></span><br><span class="line"><span class="regexp">          duration: '1000',</span></span><br><span class="line"><span class="regexp">          type: 'info'</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">      &#125;,</span></span><br><span class="line"><span class="regexp">      handleOpen6() &#123;</span></span><br><span class="line"><span class="regexp">        this.$toast('loading提示', &#123;</span></span><br><span class="line"><span class="regexp">          type: 'loading提示'</span></span><br><span class="line"><span class="regexp">        &#125;)</span></span><br><span class="line"><span class="regexp">      &#125;,</span></span><br><span class="line"><span class="regexp">      clear() &#123;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/ 清空toast</span></span><br><span class="line"><span class="regexp">        this.$toast.clear()</span></span><br><span class="line"><span class="regexp">      &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><pre><code>Vue.use(Toast, [options])</code></pre><ul>
+<li>type : Toast 的类型. | String | 默认: ‘primary’ | 可选值 “success”, “primary”, “warining”, “danger”, “info”, “loading”</li>
+<li>duration : Number | 默认 1500ms</li>
+</ul>
+<h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p><img src="https://github.com/Ljhhhhhh/vue-toast-show/blob/master/preview.gif" alt="image"></p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>vue-cli3项目使用需要在vue.config.js中做以下设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  runtimeCompiler: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/MVVM原理之模板编译/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -552,7 +735,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -584,7 +767,11 @@
         
           
         
-        <span class="site-state-item-count">2</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span>
         
       </div>
