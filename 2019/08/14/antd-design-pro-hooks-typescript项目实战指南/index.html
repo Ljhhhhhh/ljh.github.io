@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/avatar.png?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="开始之前，你可以先体验一下这个项目：在线预览(请在PC端查看) 源码附在文章末尾, 注意查收。 技术栈简介 react@16.8.6 ：用于构建用户界面的 MVVM 框架 umi@2.8.7： 可插拔的企业级 react 应用框架 dva@2.4.1： 基于 redux 和 redux-saga 的数据流方案 antd@3.21.4：基于 Ant Design 设计体系的 React UI 组件库">
+<meta name="keywords" content="React,antd-design-pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="antd design pro+hooks+typescript项目实战指南">
+<meta property="og:url" content="http://yoursite.com/2019/08/14/antd-design-pro-hooks-typescript项目实战指南/index.html">
+<meta property="og:site_name" content="Ljhhhhh&#39;s Blog">
+<meta property="og:description" content="开始之前，你可以先体验一下这个项目：在线预览(请在PC端查看) 源码附在文章末尾, 注意查收。 技术栈简介 react@16.8.6 ：用于构建用户界面的 MVVM 框架 umi@2.8.7： 可插拔的企业级 react 应用框架 dva@2.4.1： 基于 redux 和 redux-saga 的数据流方案 antd@3.21.4：基于 Ant Design 设计体系的 React UI 组件库">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/14/16c8eea05e12c104?w=229&h=234&f=jpeg&s=15423">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/8/14/16c8eea061c988d7?w=1049&h=519&f=png&s=106183">
+<meta property="og:updated_time" content="2019-08-14T10:34:36.314Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="antd design pro+hooks+typescript项目实战指南">
+<meta name="twitter:description" content="开始之前，你可以先体验一下这个项目：在线预览(请在PC端查看) 源码附在文章末尾, 注意查收。 技术栈简介 react@16.8.6 ：用于构建用户界面的 MVVM 框架 umi@2.8.7： 可插拔的企业级 react 应用框架 dva@2.4.1： 基于 redux 和 redux-saga 的数据流方案 antd@3.21.4：基于 Ant Design 设计体系的 React UI 组件库">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/8/14/16c8eea05e12c104?w=229&h=234&f=jpeg&s=15423">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/08/14/antd-design-pro-hooks-typescript项目实战指南/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>antd design pro+hooks+typescript项目实战指南 | Ljhhhhh's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ljhhhhh's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">“难”绝对是幸福的开始，“容易”绝不是该庆幸的事。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/antd-design-pro-hooks-typescript项目实战指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ljhhhhhh">
+      <meta itemprop="description" content="卢洁辉的个人博客">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ljhhhhh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">antd design pro+hooks+typescript项目实战指南
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-14 18:29:47 / 修改时间：18:34:36" itemprop="dateCreated datePublished" datetime="2019-08-14T18:29:47+08:00">2019-08-14</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>开始之前，你可以先体验一下这个项目：<a href="http://antdpro.cixi518.com/" target="_blank" rel="noopener">在线预览</a>(请在PC端查看)</p>
+<p>源码附在文章末尾, 注意查收。</p>
+<h2 id="技术栈简介"><a href="#技术栈简介" class="headerlink" title="技术栈简介"></a>技术栈简介</h2><ul>
+<li><code>react@16.8.6</code> ：用于构建用户界面的 MVVM 框架</li>
+<li><code>umi@2.8.7</code>： 可插拔的企业级 react 应用框架</li>
+<li><code>dva@2.4.1</code>： 基于 redux 和 redux-saga 的数据流方案</li>
+<li><code>antd@3.21.4</code>：基于 Ant Design 设计体系的 React UI 组件库</li>
+<li><code>Ant Design Pro@v4</code>：一个企业级中后台前端/设计解决方案</li>
+<li><code>Axios@0.19.0</code>：一个基于 promise 的 HTTP 库</li>
+<li><code>UForm@0.3.10</code>：中后台领域的表单解决方案</li>
+<li><code>typescript@3.5.3</code>：Javascript的超集</li>
+</ul>
+<h2 id="主要目录结构"><a href="#主要目录结构" class="headerlink" title="主要目录结构"></a>主要目录结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">├── config                       # umi 配置，包含路由，构建等配置</span><br><span class="line">├── src													 # 开发主目录</span><br><span class="line">│   ├── assets                   # 本地静态资源</span><br><span class="line">│   ├── components               # 业务通用组件</span><br><span class="line">│   │   ├── Authorized           # 权限认证</span><br><span class="line">│   │   ├── Exception            # 异常组件</span><br><span class="line">│   │   ├── GlobalHeader         # 全局头部</span><br><span class="line">│   │   ├── HeaderDropdown       # 头部下拉选项</span><br><span class="line">│   │   ├── PageLoading          # 页面加载</span><br><span class="line">│   │   ├── SelectLang           # 语言选择</span><br><span class="line">│   │   └── StandardTable        # 高级表格</span><br><span class="line">│   ├── global.less              # 全局样式</span><br><span class="line">│   ├── global.tsx               # 全局js</span><br><span class="line">│   ├── layouts                  # 页面通用布局组件</span><br><span class="line">│   ├── locales                  # 国际化语言包</span><br><span class="line">│   ├── models                   # 全局model</span><br><span class="line">│   │   ├── account.ts           # 用户相关model</span><br><span class="line">│   │   ├── connect.d.ts         # model相关类型定义</span><br><span class="line">│   ├── pages                    # 页面</span><br><span class="line">│   │   ├── Authorized.tsx       # 权限过滤</span><br><span class="line">│   │   ├── Exception            # 错误页面：404 403 500</span><br><span class="line">│   │   ├── Home                 # 首页</span><br><span class="line">│   │   ├── Product              # 产品列表、产品分类</span><br><span class="line">│   │   ├── Account              # 登录页面</span><br><span class="line">│   │   └── User                 # 用户列表</span><br><span class="line">│   ├── services                 # api接口</span><br><span class="line">│   └── utils                    # 通用方法</span><br></pre></td></tr></table></figure>
+
+<h2 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h2><p>做为一个基于<code>antd-design-pro</code>和<code>react hooks</code>打造的后台管理系统项目，该项目利用了<code>antd-design-pro</code>提供的权限认证、配置化路由、页面布局组件、面包屑等功能，完成了登录、首页、产品、用户几大模块的开发。由于个人感觉antd提供的表单使用起来让我感觉不是很舒服，由此找到了<a href="https://uformjs.org/#/MpI2Ij/dNFzFyTb" target="_blank" rel="noopener">UForm</a>，使用<code>UForm</code>更高效的开发了产品编辑模块。</p>
+<h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><ol>
+<li><p><code>antd-design-pro v4</code>这个版本，官方更加推荐使用区块的方案来添加页面，但是按照区块的时候，我发现等了好久都没有反应，网上冲浪发现有这个问题的人还不少。我最后的解决方案是：直接把pro-block整个仓库下载到本地，然后<code>umi block add path/to/本地地址 --path=/页面目标地址</code>，例：<code>umi block add /Users/void/Documents/www/learn/pro-blocks/ListBasicList  --path=/user/list</code>。</p>
+</li>
+<li><p>还是跟区块有关。当我添加一个区块的时候，可以看到添加进来的区块的目录结构是这样的<br><img src="https://user-gold-cdn.xitu.io/2019/8/14/16c8eea05e12c104?w=229&h=234&f=jpeg&s=15423" alt="block"><br>从图中可以看到它把utils、services、models、less一股脑儿的添加进去了，有些区块甚至还有自己的components，一开始我觉得就这样也没事，但是添加了几个区块之后，我发现，有些东西这个区块有，那个区块也有，所以我觉得区块好用，但是添加进来后，整理一下目录结构还有很有必要的。</p>
+</li>
+<li><p>上面我说过，该项目的表单使用了UForm进行开发，在处理事件上，他跟antd的form还是有很大的区别的，UForm中的事件需要在他提供的effects中去处理的，直接在Filed上写例如onChange是没有用的，正确使用方式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// SchemaForm中监听</span><br><span class="line">&lt;SchemaForm</span><br><span class="line">  effects=&#123;($)=&gt;&#123;</span><br><span class="line">    $(&quot;onFieldChange&quot;).subscribe((fieldState)=&gt;&#123;&#125;)</span><br><span class="line">    $(&quot;onFormInit&quot;).subscribe((formState)=&gt;&#123;&#125;)</span><br><span class="line">    $(&quot;onFormMount&quot;).subscribe((formState)=&gt;&#123;&#125;)</span><br><span class="line">    $(&quot;onFormReset&quot;).subscribe((formState)=&gt;&#123;&#125;)</span><br><span class="line">    $(&quot;onFormSubmit&quot;).subscribe((formState)=&gt;&#123;&#125;)</span><br><span class="line">  )&#125;</span><br><span class="line">/&gt;</span><br><span class="line">// Field中监听</span><br><span class="line">&lt;Field</span><br><span class="line">  title=&quot;一级分类&quot;</span><br><span class="line">  enum=&#123;categoryParentList&#125;</span><br><span class="line">  type=&quot;string&quot;</span><br><span class="line">  name=&quot;parentCategoryId&quot;</span><br><span class="line">  required</span><br><span class="line">  x-effect=&#123;() =&gt; &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      onChange(categoryId: number) &#123;</span><br><span class="line">        getCategoryList(categoryId)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在产品详情中，由于产品信息的分类是两级的，二级分类是根据一级分类的ID去异步获取到的子类目。一开始我使用antd的Cascader进行开发，在添加产品的时候，倒也没有问题，然而，在查看产品详情的时候，却发现Cascader无法满足根据一级分类获取二级分类并添加到指定一级分类children属性中，后面又改用了Select这个组件来重新开发。具体代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;FormLayout inline=&#123;true&#125;&gt;</span><br><span class="line">  &lt;Field</span><br><span class="line">    title=&quot;一级分类&quot;</span><br><span class="line">    enum=&#123;categoryParentList&#125;</span><br><span class="line">    type=&quot;string&quot;</span><br><span class="line">    name=&quot;parentCategoryId&quot;</span><br><span class="line">    required</span><br><span class="line">    x-effect=&#123;() =&gt; &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        onChange(categoryId: number) &#123;</span><br><span class="line">          getCategoryList(categoryId)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;&#125;</span><br><span class="line">   /&gt;</span><br><span class="line">   &#123;</span><br><span class="line">    categoryList.length ? (</span><br><span class="line">      &lt;Field</span><br><span class="line">        title=&quot;二级分类&quot;</span><br><span class="line">        enum=&#123;categoryList&#125;</span><br><span class="line">        type=&quot;string&quot;</span><br><span class="line">        name=&quot;categoryId&quot;</span><br><span class="line">        required</span><br><span class="line">      /&gt;</span><br><span class="line">    ) : null</span><br><span class="line"> &#125;</span><br><span class="line">&lt;/FormLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在使用typescript写项目的时候，会经常遇到ts的类型报错，如下图：<br><img src="https://user-gold-cdn.xitu.io/2019/8/14/16c8eea061c988d7?w=1049&h=519&f=png&s=106183" alt="ts报错"><br>这个时候，我们可以追踪到报错的根源，例如这里的<code>interface.d.ts(53, 5)</code>，mac用户option+单击就可以，得到类型定义的正确路径并按如下所示引入到文件中就可以解决问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123; UploadFile &#125; from &apos;antd/lib/upload/interface&apos;</span><br><span class="line">const [uploadList, setUploadList] = useState&lt;UploadFile[]&gt;([])</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ul>
+<li>后台接口是<a href="https://coding.imooc.com/class/179.html" target="_blank" rel="noopener">《React16+React-Router4  从零打造企业级电商后台管理系统》</a>课程上线项目提供的，我利用nginx做了代理</li>
+<li><a href="http://antdpro.cixi518.com/" target="_blank" rel="noopener">在线预览</a>（请在PC端查看）</li>
+<li><a href="https://github.com/Ljhhhhhh/antd-design-pro-learn" target="_blank" rel="noopener">github源码地址</a> </li>
+<li>如果觉得文章和项目对你有帮助的话，那就留下你宝贵的赞和star鼓励一下作者吧👍</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+            <a href="/tags/antd-design-pro/" rel="tag"># antd-design-pro</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/24/手写Axios（上）/" rel="next" title="手写Axios（上）">
+                <i class="fa fa-chevron-left"></i> 手写Axios（上）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Ljhhhhhh">
+  
+  <p class="site-author-name" itemprop="name">Ljhhhhhh</p>
+  <div class="site-description motion-element" itemprop="description">卢洁辉的个人博客</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Ljhhhhhh" title="GitHub &rarr; https://github.com/Ljhhhhhh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://juejin.im/user/57f7bf8cda2f60004f86c436" title="掘金 &rarr; https://juejin.im/user/57f7bf8cda2f60004f86c436" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>掘金</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#技术栈简介"><span class="nav-number">1.</span> <span class="nav-text">技术栈简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要目录结构"><span class="nav-number">2.</span> <span class="nav-text">主要目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目简介"><span class="nav-number">3.</span> <span class="nav-text">项目简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#踩过的坑"><span class="nav-number">4.</span> <span class="nav-text">踩过的坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ljhhhhhh</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>
