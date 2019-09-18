@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/avatar.png?v=7.2.0" color="#222">
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="在线体验与源码 在线体验：pages.cixi518.com 扫码体验： (项目源码)[https://github.com/Ljhhhhhh/vo-pages]  易用？高可定制？ 易用： 基础使用只需要列表数据、上拉事件、下拉事件就完成了翻页、刷新功能的开发 高可定制： 提供了各种配置项，用于提示语配置、样式修改、上拉下拉事件切换等等功能  使用 npm i vo-pages –save vo">
+<meta name="keywords" content="插件开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一款易用、高可定制的vue翻页组件">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/一款易用、高可定制的vue翻页组件/index.html">
+<meta property="og:site_name" content="Ljhhhhh&#39;s Blog">
+<meta property="og:description" content="在线体验与源码 在线体验：pages.cixi518.com 扫码体验： (项目源码)[https://github.com/Ljhhhhhh/vo-pages]  易用？高可定制？ 易用： 基础使用只需要列表数据、上拉事件、下拉事件就完成了翻页、刷新功能的开发 高可定制： 提供了各种配置项，用于提示语配置、样式修改、上拉下拉事件切换等等功能  使用 npm i vo-pages –save vo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/9/18/16d437fbfa9f78f2?w=260&h=260&f=png&s=4129">
+<meta property="og:updated_time" content="2019-09-18T10:36:51.280Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一款易用、高可定制的vue翻页组件">
+<meta name="twitter:description" content="在线体验与源码 在线体验：pages.cixi518.com 扫码体验： (项目源码)[https://github.com/Ljhhhhhh/vo-pages]  易用？高可定制？ 易用： 基础使用只需要列表数据、上拉事件、下拉事件就完成了翻页、刷新功能的开发 高可定制： 提供了各种配置项，用于提示语配置、样式修改、上拉下拉事件切换等等功能  使用 npm i vo-pages –save vo">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/9/18/16d437fbfa9f78f2?w=260&h=260&f=png&s=4129">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/09/18/一款易用、高可定制的vue翻页组件/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>一款易用、高可定制的vue翻页组件 | Ljhhhhh's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ljhhhhh's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">“难”绝对是幸福的开始，“容易”绝不是该庆幸的事。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/一款易用、高可定制的vue翻页组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ljhhhhhh">
+      <meta itemprop="description" content="卢洁辉的个人博客">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ljhhhhh's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一款易用、高可定制的vue翻页组件
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 18:36:15 / 修改时间：18:36:51" itemprop="dateCreated datePublished" datetime="2019-09-18T18:36:15+08:00">2019-09-18</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="在线体验与源码"><a href="#在线体验与源码" class="headerlink" title="在线体验与源码"></a>在线体验与源码</h2><ul>
+<li>在线体验：<a href="http://pages.cixi518.com/" target="_blank" rel="noopener">pages.cixi518.com</a></li>
+<li>扫码体验：<br><img src="https://user-gold-cdn.xitu.io/2019/9/18/16d437fbfa9f78f2?w=260&h=260&f=png&s=4129" width="200px" height="200px"></li>
+<li>(项目源码)[<a href="https://github.com/Ljhhhhhh/vo-pages]" target="_blank" rel="noopener">https://github.com/Ljhhhhhh/vo-pages]</a></li>
+</ul>
+<h2 id="易用？高可定制？"><a href="#易用？高可定制？" class="headerlink" title="易用？高可定制？"></a>易用？高可定制？</h2><ul>
+<li>易用： 基础使用只需要列表数据、上拉事件、下拉事件就完成了翻页、刷新功能的开发</li>
+<li>高可定制： 提供了各种配置项，用于提示语配置、样式修改、上拉下拉事件切换等等功能</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li>npm i vo-pages –save</li>
+<li>vo-pages组件父元素必须设置固定高度并填写属性overflow: hidden;如：</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">vh</span>;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br></pre></td></tr></table></figure>
+
+<p>全局引入 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mian.js</span></span><br><span class="line"><span class="keyword">import</span> VoPages <span class="keyword">from</span> <span class="string">"vo-pages"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"vo-pages/lib/vo-pages.css"</span>;</span><br><span class="line">Vue.component(<span class="string">'VoPages'</span>, VoPages)</span><br></pre></td></tr></table></figure>
+
+<p>局部引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VoPages <span class="keyword">from</span> <span class="string">'vo-pages'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"vo-pages/lib/vo-pages.css"</span>;</span><br><span class="line">components: &#123;</span><br><span class="line">  VoPages</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常规使用</p>
+<figure class="highlight plain"><figcaption><span>template</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;vo-pages :data=&quot;list&quot; @pullingUp=&quot;pullingUp&quot; @pullingDown=&quot;pullingDown&quot; :loadedAll=&quot;loadedAll&quot;&gt;</span><br><span class="line">  &lt;ul class=&quot;article-list&quot;&gt;</span><br><span class="line">    &lt;li class=&quot;article&quot; v-for=&quot;article in list&quot; :key=&quot;article.id&quot;&gt;</span><br><span class="line">      &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">      &lt;div class=&quot;left&quot;&gt;</span><br><span class="line">        &lt;img :src=&quot;article.image_uri&quot; alt=&quot;thumb&quot; /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;right&quot;&gt;</span><br><span class="line">        &lt;p&gt;&#123;&#123; article.title &#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;&#123;&#123; article.author &#125;&#125;&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/vo-pages&gt;</span><br></pre></td></tr></table></figure>
+
+<p>更多案例参考：<a href="https://github.com/Ljhhhhhh/vo-pages/tree/master/examples" target="_blank" rel="noopener">vo-pages/examples</a></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th>说明</th>
+<th align="center">类型</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td>数据列表</td>
+<td align="center">array</td>
+<td align="center">必填</td>
+</tr>
+<tr>
+<td align="left">click</td>
+<td>是否可响应用户点击事件</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="left">loadedAll</td>
+<td>是否已加载所有数据</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">pullUpHandle</td>
+<td>是否开启上拉事件，如果不需要上拉事件，必须设置为false</td>
+<td align="center">object | boolean</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="left">pullDownHandle</td>
+<td>是否开启下拉事件，如果不需要下拉事件，必须设置为false</td>
+<td align="center">object | boolean</td>
+<td align="center">{threshold: 50,stop: 30}</td>
+</tr>
+<tr>
+<td align="left">pullDownToLoadmore</td>
+<td>是否下拉加载更多</td>
+<td align="center">boolean</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">noDataHint</td>
+<td>初始化/无数据时是否提示</td>
+<td align="center">boolean</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="left">config</td>
+<td>自定义设置</td>
+<td align="center">object</td>
+<td align="center">{}</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>点击<a href="https://better-scroll.github.io/docs/zh-CN/plugins/pullup.html" target="_blank" rel="noopener">pullUpHandle</a>和<a href="https://better-scroll.github.io/docs/zh-CN/plugins/pulldown.html" target="_blank" rel="noopener">pullDownHandle</a>查看详细介绍</p>
+</blockquote>
+<h4 id="config配置项"><a href="#config配置项" class="headerlink" title="config配置项"></a>config配置项</h4><blockquote>
+<p>管道符后面的值是<code>pullDownToLoadmore</code>为ture时(下拉加载更多)的默认值</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pullDownMsgDelay</td>
+<td>下拉提示语展示时长(ms)</td>
+<td>number</td>
+<td>800</td>
+</tr>
+<tr>
+<td>loading</td>
+<td></td>
+<td></td>
+<td>加载中……</td>
+</tr>
+<tr>
+<td>refresh</td>
+<td></td>
+<td></td>
+<td>刷新中……  |加载中……</td>
+</tr>
+<tr>
+<td>refreshed</td>
+<td></td>
+<td></td>
+<td>刷新成功 | 已加载</td>
+</tr>
+<tr>
+<td>loadedAllMsg</td>
+<td></td>
+<td></td>
+<td>已加载全部</td>
+</tr>
+<tr>
+<td>pullUpMsg</td>
+<td></td>
+<td></td>
+<td>上拉加载更多</td>
+</tr>
+<tr>
+<td>pullDownMsg</td>
+<td></td>
+<td></td>
+<td>下拉刷新 | 下拉加载更多</td>
+</tr>
+<tr>
+<td>touchLeaveMsg</td>
+<td></td>
+<td></td>
+<td>释放立即刷新 | 释放加载更多</td>
+</tr>
+<tr>
+<td>noData</td>
+<td></td>
+<td></td>
+<td>暂无数据</td>
+</tr>
+<tr>
+<td>pullDownStyle</td>
+<td>下拉提示样式</td>
+<td></td>
+<td>{}</td>
+</tr>
+<tr>
+<td>pullUpStyle</td>
+<td>上拉提示样式</td>
+<td></td>
+<td>{}</td>
+</tr>
+<tr>
+<td>endLineStyle</td>
+<td>底线样式</td>
+<td></td>
+<td>{}</td>
+</tr>
+</tbody></table>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><ul>
+<li>pullingUp：上拉超过<code>pullUpHandle</code>的<code>threshold</code>触发</li>
+<li>pullingDown： 下拉超过<code>pullDownHandle</code>的<code>threshold</code>触发</li>
+</ul>
+<h2 id="Slot"><a href="#Slot" class="headerlink" title="Slot"></a>Slot</h2><p>只有一个默认插槽，用来展示用户数据</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>数据不足一屏时且有下一页时会自动请求下一页数据</li>
+</ul>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li><input disabled type="checkbox"> 下拉图标（掘金下拉效果）</li>
+<li><input disabled type="checkbox"> css自动加载</li>
+</ul>
+<hr>
+<p>如果各位大佬使用中遇到bug或不爽的点，还希望可以给提<a href="https://github.com/Ljhhhhhh/vo-pages/issues" target="_blank" rel="noopener">issue</a>，您的反馈使我进步，非常感谢。</p>
+<p>再次奉上<a href="https://github.com/Ljhhhhhh/vo-pages" target="_blank" rel="noopener">项目源码</a></p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/插件开发/" rel="tag"># 插件开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/14/antd-design-pro-hooks-typescript项目实战指南/" rel="next" title="antd design pro+hooks+typescript项目实战指南">
+                <i class="fa fa-chevron-left"></i> antd design pro+hooks+typescript项目实战指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Ljhhhhhh">
+  
+  <p class="site-author-name" itemprop="name">Ljhhhhhh</p>
+  <div class="site-description motion-element" itemprop="description">卢洁辉的个人博客</div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Ljhhhhhh" title="GitHub &rarr; https://github.com/Ljhhhhhh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://juejin.im/user/57f7bf8cda2f60004f86c436" title="掘金 &rarr; https://juejin.im/user/57f7bf8cda2f60004f86c436" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>掘金</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在线体验与源码"><span class="nav-number">1.</span> <span class="nav-text">在线体验与源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#易用？高可定制？"><span class="nav-number">2.</span> <span class="nav-text">易用？高可定制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">4.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#config配置项"><span class="nav-number">4.0.1.</span> <span class="nav-text">config配置项</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Events"><span class="nav-number">5.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slot"><span class="nav-number">6.</span> <span class="nav-text">Slot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">7.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TODO"><span class="nav-number">8.</span> <span class="nav-text">TODO</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ljhhhhhh</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>
